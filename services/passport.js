@@ -25,7 +25,7 @@ passport.use(
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
     async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleId: profile })
+      const existingUser = await User.findOne({ googleId: profile.id });
       if (existingUser) {
         return done(null, existingUser);
       }
